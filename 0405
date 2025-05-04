@@ -1,0 +1,760 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão Direcionada - Simulado PF (Agente de Polícia)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #8b0000;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 5px solid #590000;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #8b0000;
+            border-bottom: 2px solid #8b0000;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #333;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-left: 5px solid #8b0000;
+            font-size: 1.4em;
+            margin-top: 30px;
+        }
+        
+        h4 {
+            color: #8b0000;
+            font-size: 1.2em;
+            margin-top: 25px;
+        }
+        
+        .conceito-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #8b0000;
+        }
+        
+        .destaque-box {
+            background-color: #fff5f5;
+            border: 1px solid #ffcccb;
+            border-left: 5px solid #8b0000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .etapas-box {
+            background-color: #f8f8ff;
+            border: 1px solid #e6e6fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .etapa {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #8b0000;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .etapa-numero {
+            background-color: #8b0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .destaque {
+            color: #8b0000;
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #8b0000;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .nota {
+            background-color: #fffde7;
+            border-left: 4px solid #ffd600;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .dica {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .atencao {
+            background-color: #ffebee;
+            border-left: 4px solid #b71c1c;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .disciplina-header {
+            background-color: #8b0000;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-top: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .disciplina-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .definicao {
+            display: flex;
+            margin: 15px 0;
+        }
+        
+        .definicao-termo {
+            background-color: #8b0000;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 8px 0 0 8px;
+            width: 30%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .definicao-descricao {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 0 8px 8px 0;
+            border: 1px solid #ddd;
+            border-left: none;
+            width: 70%;
+        }
+        
+        .subtopico {
+            margin-left: 20px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .comparativo {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .comparativo-col {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .comparativo-col:first-child {
+            background-color: #f5f5f5;
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .comparativo-col:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .comparativo-header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #8b0000;
+        }
+    </style>
+
+
+    <header>
+        <h1>REVISÃO DIRECIONADA - SIMULADO PF (AGENTE DE POLÍCIA)</h1>
+        <p>Análise detalhada dos tópicos cobrados no simulado</p>
+    </header>
+    
+    <div class="container">
+        <div class="disciplina-header">LÍNGUA PORTUGUESA</div>
+        <div class="disciplina-content">
+            <h3>Interpretação de Textos</h3>
+            <div class="conceito-box">
+                <p>No simulado, a interpretação textual foi explorada em contexto literário (texto de Clarice Lispector), abordando a compreensão de metáforas, estrutura narrativa, e percepção da subjetividade do autor.</p>
+            </div>
+            
+            <h3>Tipologia e Gêneros Textuais</h3>
+            <div class="definicao">
+                <div class="definicao-termo">Elementos narrativos</div>
+                <div class="definicao-descricao">Combinação de descrição e narração, com alternância entre frases curtas e longas para reforçar oscilação emocional da autora.</div>
+            </div>
+            
+            <h3>Coesão e Coerência</h3>
+            <div class="atencao">
+                <p>Identificação dos tipos de coesão (referencial, interfrásica) e seus conectivos foram avaliados no simulado - especial atenção ao uso de conectivos como "como" e "pois".</p>
+            </div>
+            
+            <h3>Morfologia e Sintaxe</h3>
+            <div class="comparativo">
+                <div class="comparativo-col">
+                    <div class="comparativo-header">Classes Gramaticais</div>
+                    <ul>
+                        <li>Substantivos - classe que denomina seres em geral</li>
+                        <li>Adjetivos - concordância com gênero do referente</li>
+                        <li>Conectivos - conjunções coordenativas e subordinativas</li>
+                    </ul>
+                </div>
+                <div class="comparativo-col">
+                    <div class="comparativo-header">Funções Sintáticas</div>
+                    <ul>
+                        <li>Complemento verbal - objeto direto e indireto</li>
+                        <li>Adjuntos adverbiais - circunstância de lugar, tempo, modo</li>
+                        <li>Conjunções coordenativas e seu valor semântico</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Redação Oficial</h3>
+            <div class="etapas-box">
+                <h4>Características da Redação Oficial:</h4>
+                <div class="etapa">
+                    <span class="etapa-numero">1</span> 
+                    <strong>Precisão</strong>: Articulação da linguagem para perfeita compreensão da ideia e ausência de ambiguidade
+                </div>
+                <div class="etapa">
+                    <span class="etapa-numero">2</span> 
+                    <strong>Concisão</strong>: Transmitir máximo de informações com mínimo de palavras (evitar detalhamentos excessivos)
+                </div>
+                <div class="etapa">
+                    <span class="etapa-numero">3</span> 
+                    <strong>Formato específico</strong>: Ofício Circular (para múltiplos destinatários), Ofício Conjunto (para múltiplos remetentes)
+                </div>
+            </div>
+            
+            <div class="destaque-box">
+                <h4>Atenção para os conceitos de:</h4>
+                <ul>
+                    <li>Colocação pronominal - não iniciar orações com pronome oblíquo átono</li>
+                    <li>Emprego da crase - obrigatória em locuções adverbiais femininas</li>
+                    <li>Pontuação - dois-pontos para iniciar explicações; vírgulas para isolar adjuntos adverbiais</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">DIREITO ADMINISTRATIVO</div>
+        <div class="disciplina-content">
+            <h3>Licitações e Contratos (Lei 14.133/2021)</h3>
+            <div class="conceito-box">
+                <p>A nova Lei de Licitações trouxe novas modalidades licitatórias, sendo cobrado no simulado o conceito de Diálogo Competitivo.</p>
+            </div>
+            
+            <div class="definicao">
+                <div class="definicao-termo">Diálogo Competitivo</div>
+                <div class="definicao-descricao">Modalidade de licitação para contratação de obras, serviços e compras em que a Administração Pública realiza diálogos com licitantes previamente selecionados mediante critérios objetivos, com o intuito de desenvolver uma ou mais alternativas capazes de atender às suas necessidades, devendo os licitantes apresentar proposta final após o encerramento dos diálogos.</div>
+            </div>
+            
+            <div class="definicao">
+                <div class="definicao-termo">Sistema de Registro de Preços</div>
+                <div class="definicao-descricao">Conjunto de procedimentos para realização, mediante contratação direta ou licitação nas modalidades pregão ou concorrência, de registro formal de preços relativos a prestação de serviços, a obras e a aquisição e locação de bens para contratações futuras.</div>
+            </div>
+            
+            <h3>Responsabilidade Civil do Estado</h3>
+            <div class="destaque-box">
+                <p>A responsabilidade civil do Estado é <span class="destaque">objetiva</span>, dispensando a existência de dolo ou culpa, enquanto a responsabilidade civil do agente público é <span class="destaque">subjetiva</span>, requerendo a presença desses elementos subjetivos.</p>
+            </div>
+            
+            <div class="atencao">
+                <p>Não confundir: o Estado responde objetivamente, mas o agente público causador do dano somente responderá de maneira subjetiva perante o Estado (regressivamente), apenas quando se comprovar que agiu com dolo ou culpa.</p>
+            </div>
+            
+            <h3>Regime Jurídico dos Servidores (Lei 8.112/1990)</h3>
+            <div class="conceito-box">
+                <p>No simulado foi cobrada a possibilidade de nomeação interina para outro cargo de confiança quando servidor já ocupa cargo em comissão.</p>
+                <blockquote>Art. 9º Parágrafo único. O servidor ocupante de cargo em comissão ou de natureza especial poderá ser nomeado para ter exercício, interinamente, em outro cargo de confiança, sem prejuízo das atribuições do que atualmente ocupa, hipótese em que deverá optar pela remuneração de um deles durante o período da interinidade.</blockquote>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">DIREITO CONSTITUCIONAL</div>
+        <div class="disciplina-content">
+            <h3>Organização Político-Administrativa</h3>
+            <div class="conceito-box">
+                <div class="atencao">
+                    <p>Não confundir os conceitos de:</p>
+                </div>
+                <div class="comparativo">
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Forma de Governo</div>
+                        <p>Refere-se ao modo como se dá a instituição do poder na sociedade e a relação entre governantes e governados.</p>
+                        <p><strong>No Brasil: República</strong></p>
+                        <p>Características: temporariedade, eletividade e responsabilidade</p>
+                    </div>
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Sistema de Governo</div>
+                        <p>Refere-se à relação entre os poderes, especialmente Executivo e Legislativo.</p>
+                        <p><strong>No Brasil: Presidencialismo</strong></p>
+                        <p>Características: separação entre poderes, presidente como chefe de Estado e de governo</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="etapas-box">
+                <h4>Estrutura fundamental do Estado brasileiro:</h4>
+                <ul>
+                    <li><strong>Forma de estado:</strong> Federação</li>
+                    <li><strong>Regime político:</strong> Democracia</li>
+                    <li><strong>Forma de governo:</strong> República</li>
+                    <li><strong>Sistema de governo:</strong> Presidencialismo</li>
+                </ul>
+            </div>
+            
+            <h3>Direitos e Garantias Fundamentais</h3>
+            <div class="destaque-box">
+                <h4>Inviolabilidade de Domicílio (art. 5º, XI, CF)</h4>
+                <p>O ingresso na casa de um indivíduo sem permissão do morador só é permitido em casos específicos:</p>
+                <ul>
+                    <li>Flagrante delito - a qualquer hora</li>
+                    <li>Desastre - a qualquer hora</li>
+                    <li>Prestação de socorro - a qualquer hora</li>
+                    <li>Determinação judicial - apenas durante o dia</li>
+                </ul>
+            </div>
+            
+            <div class="conceito-box">
+                <h4>Crimes imprescritíveis conforme a Constituição Federal</h4>
+                <ul>
+                    <li>Racismo (art. 5º, XLII) - crime inafiançável e imprescritível</li>
+                    <li>Ação de grupos armados, civis ou militares, contra a ordem constitucional e o Estado Democrático (art. 5º, XLIV) - crime inafiançável e imprescritível</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">DIREITO PENAL E PROCESSUAL PENAL</div>
+        <div class="disciplina-content">
+            <h3>Crimes contra a Pessoa</h3>
+            <div class="conceito-box">
+                <h4>Homicídio qualificado - uso de arma de fogo de uso restrito ou proibido</h4>
+                <p>Recentemente, foi incluído o inciso VIII ao art. 121, §2º do CP, criando mais uma qualificadora, aplicável quando o homicídio for praticado com emprego de arma de fogo de uso restrito ou proibido:</p>
+                <blockquote>VIII - com emprego de arma de fogo de uso restrito ou proibido: Pena - reclusão, de doze a trinta anos.</blockquote>
+                <div class="nota">
+                    <p>Não confundir: o homicídio não é qualificado quando é cometido com arma de fogo de uso permitido.</p>
+                </div>
+            </div>
+            
+            <h3>Crimes contra a Administração Pública</h3>
+            <div class="conceito-box">
+                <div class="comparativo">
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Prevaricação</div>
+                        <p>Art. 319 - Retardar ou deixar de praticar, indevidamente, ato de ofício, ou praticá-lo contra disposição expressa de lei, <strong>para satisfazer interesse ou sentimento pessoal</strong>.</p>
+                        <p>Pena - detenção, de três meses a um ano, e multa.</p>
+                    </div>
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Corrupção Passiva</div>
+                        <p>Art. 317 - Solicitar ou receber, para si ou para outrem, direta ou indiretamente, ainda que fora da função ou antes de assumi-la, mas em razão dela, <strong>vantagem indevida</strong>, ou aceitar promessa de tal vantagem.</p>
+                        <p>Pena – reclusão, de 2 (dois) a 12 (doze) anos, e multa.</p>
+                    </div>
+                </div>
+                <div class="atencao">
+                    <p>Lembre-se: "favorzinho gratuito" = corrupção passiva privilegiada; "satisfação de interesse próprio" = prevaricação.</p>
+                </div>
+            </div>
+            
+            <h3>Prisão em Flagrante</h3>
+            <div class="conceito-box">
+                <h4>Tipos de flagrante quanto à obrigatoriedade</h4>
+                <div class="definicao">
+                    <div class="definicao-termo">Flagrante facultativo</div>
+                    <div class="definicao-descricao">Qualquer do povo <span class="destaque">pode</span> prender quem esteja em situação de flagrante delito</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Flagrante obrigatório</div>
+                    <div class="definicao-descricao">Autoridades policiais e seus agentes <span class="destaque">devem</span> prender quem quer que seja encontrado em flagrante delito</div>
+                </div>
+                <blockquote>CPP, Art. 301. Qualquer do povo poderá e as autoridades policiais e seus agentes deverão prender quem quer que seja encontrado em flagrante delito.</blockquote>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">LEGISLAÇÃO ESPECIAL</div>
+        <div class="disciplina-content">
+            <h3>Lei de Crimes Ambientais (Lei nº 9.605/1998)</h3>
+            <div class="conceito-box">
+                <p>O simulado avaliou a responsabilidade concorrente entre pessoas físicas e jurídicas.</p>
+                <blockquote>Lei nº 9.605/1998, Art. 3º As pessoas jurídicas serão responsabilizadas administrativa, civil e penalmente conforme o disposto nesta Lei, nos casos em que a infração seja cometida por decisão de seu representante legal ou contratual, ou de seu órgão colegiado, no interesse ou benefício da sua entidade.</blockquote>
+                <blockquote>Parágrafo único. A responsabilidade das pessoas jurídicas não exclui a das pessoas físicas, autoras, co-autoras ou partícipes do mesmo fato.</blockquote>
+            </div>
+            
+            <h3>Lei nº 10.446/2002 - Infrações Penais de Repercussão Interestadual</h3>
+            <div class="conceito-box">
+                <p>A investigação conduzida pelo Departamento de Polícia Federal, em caso de sequestro do titular de uma secretaria estadual com repercussão interestadual ou internacional, que exija repressão uniforme e o crime seja cometido em razão da função pública ou por motivação política, independe de autorização.</p>
+                <div class="atencao">
+                    <p>A investigação pelo DPF de outros casos (não especificados na lei) dependerá de autorização do Ministro de Estado da Justiça.</p>
+                </div>
+            </div>
+            
+            <h3>Lei nº 9.455/1997 - Crime de Tortura</h3>
+            <div class="conceito-box">
+                <p>Aplicação extraterritorial da lei brasileira em crimes de tortura:</p>
+                <blockquote>Lei nº 9.455/1997, Art. 2º O disposto nesta Lei aplica-se ainda quando o crime não tenha sido cometido em território nacional, sendo a vítima brasileira ou encontrando-se o agente em local sob jurisdição brasileira.</blockquote>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">ESTATÍSTICA</div>
+        <div class="disciplina-content">
+            <h3>Distribuição de Poisson</h3>
+            <div class="conceito-box">
+                <p>A distribuição de Poisson é um modelo de distribuição discreta de probabilidade que descreve a probabilidade de ocorrências aleatórias em determinado intervalo de tempo, mas com uma taxa média constante.</p>
+                <div class="etapas-box">
+                    <h4>Características da Distribuição de Poisson:</h4>
+                    <ul>
+                        <li>Média (E[X]) = λ (parâmetro)</li>
+                        <li>Variância (V[X]) = λ</li>
+                        <li>Função de probabilidade: P(X = k) = (e<sup>-λ</sup> × λ<sup>k</sup>)/k!</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Análise de Variância (ANOVA)</h3>
+            <div class="conceito-box">
+                <p>A ANOVA é um teste estatístico utilizado para comparar médias de três ou mais grupos independentes para determinar se há diferenças estatisticamente significativas entre eles.</p>
+                <div class="etapas-box">
+                    <h4>Pressupostos da ANOVA:</h4>
+                    <ul>
+                        <li>Independência: os erros são independentes</li>
+                        <li>Normalidade: os erros seguem distribuição normal</li>
+                        <li>Homoscedasticidade: as variâncias dos erros são iguais</li>
+                    </ul>
+                    <div class="atencao">
+                        <p>A ANOVA não testa heteroscedasticidade (variâncias diferentes), mas sim homoscedasticidade (variâncias iguais).</p>
+                    </div>
+                </div>
+                <div class="etapas-box">
+                    <h4>Cálculo do grau de liberdade:</h4>
+                    <ul>
+                        <li>Grau de liberdade total: GLtotal = k × n – 1</li>
+                        <li>Grau de liberdade do tratamento: GLtrat = k – 1</li>
+                        <li>Grau de liberdade do erro: GLerro = k × (n – 1)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Regressão Linear Simples</h3>
+            <div class="conceito-box">
+                <p>A regressão linear simples é usada para prever os valores de uma variável (Y) a partir de outra variável (X), ajustando uma reta através dos pontos de dados.</p>
+                <div class="etapas-box">
+                    <h4>Fórmulas importantes:</h4>
+                    <ul>
+                        <li>Coeficiente de determinação (R²) = quadrado do coeficiente de correlação (R)</li>
+                        <li>Coeficiente b (inclinação) = r × (σy/σx)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">RACIOCÍNIO LÓGICO</div>
+        <div class="disciplina-content">
+            <h3>Lógica Proposicional</h3>
+            <div class="conceito-box">
+                <h4>Principais construções lógicas cobradas no simulado:</h4>
+                <div class="comparativo">
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Conectivos Lógicos</div>
+                        <ul>
+                            <li><strong>Condicional:</strong> "Se P, então Q" (P → Q)</li>
+                            <li><strong>Bicondicional:</strong> "P se, e somente se, Q" (P ↔ Q)</li>
+                            <li><strong>Conjunção:</strong> "P e Q" (P ∧ Q)</li>
+                            <li><strong>Disjunção:</strong> "P ou Q" (P ∨ Q)</li>
+                            <li><strong>Negação:</strong> "não P" (¬P)</li>
+                        </ul>
+                    </div>
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Equivalências importantes</div>
+                        <ul>
+                            <li>P → Q ≡ ¬P ∨ Q</li>
+                            <li>¬(P ∧ Q) ≡ ¬P ∨ ¬Q</li>
+                            <li>¬(P ∨ Q) ≡ ¬P ∧ ¬Q</li>
+                            <li>"P somente se Q" ≡ P → Q</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="destaque-box">
+                    <p>Na questão 51, foi cobrada a equivalência entre "Os agentes estavam bem treinados somente se os instrutores tinham boa didática" e "Os agentes não estavam bem treinados ou os instrutores tinham boa didática".</p>
+                </div>
+            </div>
+            
+            <h3>Análise Combinatória</h3>
+            <div class="conceito-box">
+                <h4>Arranjos, Permutações e Combinações:</h4>
+                <div class="definicao">
+                    <div class="definicao-termo">Permutação Circular</div>
+                    <div class="definicao-descricao">Pn = (n-1)!</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Permutação Simples</div>
+                    <div class="definicao-descricao">Pn = n!</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Combinação</div>
+                    <div class="definicao-descricao">C(n,p) = n!/(p! × (n-p)!)</div>
+                </div>
+                <div class="atencao">
+                    <p>Na questão 57, foi cobrado o cálculo do número total de possibilidades de formar uma comissão: T = C¹₃ × C²₅ × C²₇ = 3 × 10 × 21 = 630</p>
+                </div>
+            </div>
+            
+            <h3>Análise de Argumentos</h3>
+            <div class="conceito-box">
+                <p>O simulado cobrou a análise de validade de argumentos através do método da conclusão falsa:</p>
+                <div class="etapas-box">
+                    <p>"Se é possível fazer com que todas as premissas sejam verdadeiras mantendo a conclusão falsa, o argumento é inválido. Se não for possível fazer com que todas as premissas sejam verdadeiras mantendo a conclusão falsa, o argumento é válido."</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">INFORMÁTICA</div>
+        <div class="disciplina-content">
+            <h3>Redes de Computadores</h3>
+            <div class="conceito-box">
+                <h4>Arquiteturas e Modelos de Rede:</h4>
+                <div class="comparativo">
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Modelo P2P (Peer-to-Peer)</div>
+                        <ul>
+                            <li>Não possui hierarquia entre máquinas</li>
+                            <li>Comunicação direta entre dispositivos</li>
+                            <li>Sem servidor dedicado</li>
+                            <li>Facilmente configurável e escalável</li>
+                        </ul>
+                    </div>
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Modelo Cliente-Servidor</div>
+                        <ul>
+                            <li>Possui hierarquia entre máquinas</li>
+                            <li>Clientes solicitam recursos/serviços</li>
+                            <li>Servidor centraliza recursos</li>
+                            <li>Facilita segurança e administração</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4>Tipos de Redes:</h4>
+                <div class="definicao">
+                    <div class="definicao-termo">Rede MAN</div>
+                    <div class="definicao-descricao">Metropolitan Area Network - Rede que interliga LANs em uma área geográfica metropolitana, podendo se estender por dezenas de quilômetros.</div>
+                </div>
+                
+                <h4>Endereços IP Privados:</h4>
+                <div class="atencao">
+                    <p>No simulado foi cobrado o conhecimento das faixas de IPs privados!</p>
+                </div>
+                <table>
+                    <tbody><tr>
+                        <th>Classe</th>
+                        <th>Faixa de Endereços</th>
+                    </tr>
+                    <tr>
+                        <td>Classe A</td>
+                        <td>10.0.0.0 a 10.255.255.255</td>
+                    </tr>
+                    <tr>
+                        <td>Classe B</td>
+                        <td>172.16.0.0 a 172.31.255.255</td>
+                    </tr>
+                    <tr>
+                        <td>Classe C</td>
+                        <td>192.168.0.0 a 192.168.255.255</td>
+                    </tr>
+                </tbody></table>
+                <div class="atencao">
+                    <p>Na questão 67, foi avaliado se o endereço '172.15.0.1' estava dentro da faixa de IPs privados. O endereço NÃO está dentro das faixas privadas, pois está fora do intervalo da Classe B (172.16.0.0 a 172.31.255.255).</p>
+                </div>
+            </div>
+            
+            <h3>Cloud Computing e Email</h3>
+            <div class="conceito-box">
+                <h4>Modelos de Serviço em Cloud:</h4>
+                <div class="comparativo">
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">SaaS (Software as a Service)</div>
+                        <p>Oferece aplicativos que rodam na nuvem, sem necessidade de instalação e manutenção local.</p>
+                    </div>
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">PaaS (Platform as a Service)</div>
+                        <p>Fornece ambiente completo de desenvolvimento e implantação na nuvem para desenvolvedores.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Segurança da Informação</h3>
+            <div class="conceito-box">
+                <h4>Tipos de Malware:</h4>
+                <div class="definicao">
+                    <div class="definicao-termo">Ransomware</div>
+                    <div class="definicao-descricao">Criptografa ou bloqueia acesso aos arquivos e/ou equipamento do usuário, exigindo pagamento (resgate) para liberação.</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Adware</div>
+                    <div class="definicao-descricao">Malware projetado para apresentar propagandas e anúncios em navegadores, sem autorização do usuário.</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Screenlogger</div>
+                    <div class="definicao-descricao">Malware que captura teclas digitadas em teclados virtuais (diferente de keylogger, que captura teclas físicas).</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="disciplina-header">CONTABILIDADE GERAL</div>
+        <div class="disciplina-content">
+            <h3>Princípios e Conceitos Básicos</h3>
+            <div class="conceito-box">
+                <div class="definicao">
+                    <div class="definicao-termo">Objeto da Contabilidade</div>
+                    <div class="definicao-descricao">O patrimônio de qualquer entidade (empresas, pessoas físicas, órgãos públicos, etc.).</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Finalidade da Contabilidade</div>
+                    <div class="definicao-descricao">Controlar o patrimônio das entidades.</div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Objetivo da Contabilidade</div>
+                    <div class="definicao-descricao">Fornecer informações sobre a situação patrimonial e financeira para tomada de decisões.</div>
+                </div>
+                <div class="atencao">
+                    <p>Atenção para não confundir objeto, finalidade e objetivo da contabilidade!</p>
+                </div>
+            </div>
+            
+            <h3>Fatos Contábeis</h3>
+            <div class="conceito-box">
+                <div class="comparativo">
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Fato Permutativo</div>
+                        <p>Altera a composição do patrimônio sem alterar seu valor total (não modifica o PL)</p>
+                    </div>
+                    <div class="comparativo-col">
+                        <div class="comparativo-header">Fato Modificativo</div>
+                        <p>Envolve 1 conta patrimonial e 1 conta de resultado, alterando o PL.</p>
+                    </div>
+                </div>
+                <div class="definicao">
+                    <div class="definicao-termo">Fato Misto</div>
+                    <div class="definicao-descricao">Combina um fato permutativo (entre contas patrimoniais) e um fato modificativo. Altera a composição e o valor total do patrimônio.</div>
+                </div>
+            </div>
+            
+            <h3>Balancete de Verificação</h3>
+            <div class="conceito-box">
+                <p>O balancete de verificação é um demonstrativo auxiliar que relaciona todas as contas do Razão com seus respectivos saldos, permitindo verificar se os lançamentos foram realizados respeitando o método das partidas dobradas.</p>
+                <div class="etapas-box">
+                    <h4>Tipos de Balancete:</h4>
+                    <ul>
+                        <li><strong>Balancete de 2 colunas:</strong> Apenas Saldo Final</li>
+                        <li><strong>Balancete de 4 colunas:</strong> Saldo Anterior + Movimento + Saldo Final</li>
+                        <li><strong>Balancete de 6 colunas:</strong> Balancete Anterior + Movimento do Período + Balancete Atual</li>
+                        <li><strong>Balancete de 8 colunas:</strong> Balancete Anterior + Movimento do Período + Saldo do Período + Balancete Atual</li>
+                    </ul>
+                </div>
+                <div class="atencao">
+                    <p>Apenas o balancete de 8 colunas apresenta o saldo da movimentação do período!</p>
+                </div>
+            </div>
+            
+            <h3>Demonstração do Resultado do Exercício (DRE)</h3>
+            <div class="conceito-box">
+                <h4>Estrutura da DRE:</h4>
+                <div class="etapas-box">
+                    <div class="etapa">
+                        <span class="etapa-numero">1</span> 
+                        <strong>Receita Bruta</strong> - (-) Deduções (devoluções, abatimentos, descontos comerciais, impostos)
+                    </div>
+                    <div class="etapa">
+                        <span class="etapa-numero">2</span> 
+                        <strong>Receita Líquida</strong> - (-) Custo das Mercadorias Vendidas (CMV)
+                    </div>
+                    <div class="etapa">
+                        <span class="etapa-numero">3</span> 
+                        <strong>Lucro Bruto</strong> - (-) Despesas Operacionais + Receitas Operacionais
+                    </div>
+                    <div class="etapa">
+                        <span class="etapa-numero">4</span> 
+                        <strong>Lucro Operacional</strong> + Receitas não Operacionais - Despesas não Operacionais
+                    </div>
+                    <div class="etapa">
+                        <span class="etapa-numero">5</span> 
+                        <strong>Lucro antes do IR/CSLL</strong> - (-) IR/CSLL
+                    </div>
+                    <div class="etapa">
+                        <span class="etapa-numero">6</span> 
+                        <strong>Lucro Líquido do Exercício</strong>
+                    </div>
+                </div>
+                <div class="destaque-box">
+                    <p>O desconto comercial (incondicional) é uma dedução da receita bruta, enquanto o desconto condicional (financeiro) é uma despesa financeira operacional.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
